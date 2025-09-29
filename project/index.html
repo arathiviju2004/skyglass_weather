@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyGlass Weather</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Background Effects -->
+        <div class="background-gradient"></div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="glass-container">
+            <!-- Header -->
+            <header class="app-header">
+                <h1 class="app-title">SkyGlass Weather</h1>
+                <div class="search-container">
+                    <input type="text" id="cityInput" placeholder="Search for a city..." class="search-input">
+                    <button id="searchBtn" class="search-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Loading State -->
+            <div id="loadingState" class="loading-state">
+                <div class="loading-spinner"></div>
+                <p>Getting your weather...</p>
+            </div>
+
+            <!-- Error State -->
+            <div id="errorState" class="error-state hidden">
+                <div class="error-icon">⚠️</div>
+                <p class="error-message">Unable to fetch weather data</p>
+                <button id="retryBtn" class="retry-btn">Try Again</button>
+            </div>
+
+            <!-- Weather Content -->
+            <main id="weatherContent" class="weather-content hidden">
+                <!-- Current Weather -->
+                <section class="current-weather glass-panel">
+                    <div class="current-info">
+                        <div class="location">
+                            <h2 id="currentLocation">Loading...</h2>
+                            <p id="currentDate"></p>
+                        </div>
+                        <div class="temperature-display">
+                            <span id="currentTemp">--°</span>
+                            <div class="weather-icon">
+                                <img id="weatherIcon" src="" alt="Weather" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weather-description">
+                        <p id="weatherDescription">Loading...</p>
+                        <p id="feelsLike">Feels like --°</p>
+                    </div>
+                </section>
+
+                <!-- Weather Details -->
+                <section class="weather-details">
+                    <div class="detail-card glass-panel">
+                        <div class="detail-icon">💧</div>
+                        <div class="detail-info">
+                            <p class="detail-label">Humidity</p>
+                            <p class="detail-value" id="humidity">--%</p>
+                        </div>
+                    </div>
+                    <div class="detail-card glass-panel">
+                        <div class="detail-icon">🌪️</div>
+                        <div class="detail-info">
+                            <p class="detail-label">Wind Speed</p>
+                            <p class="detail-value" id="windSpeed">-- km/h</p>
+                        </div>
+                    </div>
+                    <div class="detail-card glass-panel">
+                        <div class="detail-icon">👁️</div>
+                        <div class="detail-info">
+                            <p class="detail-label">Visibility</p>
+                            <p class="detail-value" id="visibility">-- km</p>
+                        </div>
+                    </div>
+                    <div class="detail-card glass-panel">
+                        <div class="detail-icon">🌡️</div>
+                        <div class="detail-info">
+                            <p class="detail-label">Pressure</p>
+                            <p class="detail-value" id="pressure">-- hPa</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 5-Day Forecast -->
+                <section class="forecast-section">
+                    <h3 class="section-title">5-Day Forecast</h3>
+                    <div class="forecast-container glass-panel">
+                        <div id="forecastCards" class="forecast-cards">
+                            <!-- Forecast cards will be dynamically generated -->
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Location Button -->
+            <button id="locationBtn" class="location-btn glass-panel">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span>Use My Location</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="weather-api.js"></script>
+    <script src="ui.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
